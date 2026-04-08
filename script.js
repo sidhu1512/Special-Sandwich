@@ -1,10 +1,10 @@
 /* ============================================================
    SSS — Advanced Animations (GSAP + ScrollTrigger)
+   Dribbble-inspired cream parallax + hero split-text + hover
    ============================================================ */
 (() => {
   'use strict';
 
-  /* ---- Wait for GSAP ---- */
   if (typeof gsap === 'undefined') {
     console.warn('GSAP not loaded. Falling back to basic reveals.');
     fallbackReveal();
@@ -17,21 +17,19 @@
      1. HERO — Staggered split-text entry
      ========================================================== */
   function initHeroAnimation() {
-    const badge = document.querySelector('.hero__badge');
-    const words = document.querySelectorAll('.hero__word');
-    const sub   = document.querySelector('.hero__sub');
-    const cta   = document.querySelector('.hero__cta');
+    const badge  = document.querySelector('.hero__badge');
+    const words  = document.querySelectorAll('.hero__word');
+    const sub    = document.querySelector('.hero__sub');
+    const cta    = document.querySelector('.hero__cta');
     const scroll = document.querySelector('.hero__scroll');
 
     const tl = gsap.timeline({ delay: 0.3 });
 
-    // Badge fades in first
     tl.fromTo(badge,
       { opacity: 0, y: -20 },
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
     );
 
-    // Words stagger in from below
     tl.to(words, {
       opacity: 1,
       y: 0,
@@ -40,7 +38,6 @@
       ease: 'power3.out'
     }, '-=0.2');
 
-    // Subtitle and CTA
     tl.fromTo(sub,
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
@@ -53,7 +50,6 @@
       '-=0.3'
     );
 
-    // Scroll indicator pulse in
     if (scroll) {
       tl.fromTo(scroll,
         { opacity: 0 },
@@ -64,98 +60,105 @@
   }
 
   /* ==========================================================
-     2. PARALLAX SHOWCASE — Multi-layer scroll depth
+     2. DRIBBBLE CREAM SECTION — Multi-layer parallax
      ========================================================== */
-  function initParallax() {
-    const showcase  = document.getElementById('parallax-showcase');
-    if (!showcase) return;
+  function initDribbbleParallax() {
+    const section   = document.getElementById('dribbble-section');
+    if (!section) return;
 
-    const bgVideo   = showcase.querySelector('.parallax-showcase__bg');
-    const words     = showcase.querySelectorAll('.parallax-word');
-    const sandwich  = document.getElementById('parallax-sandwich');
+    const script    = document.getElementById('dribbble-script');
+    const bgText    = document.getElementById('dribbble-bg-text');
+    const bgSpans   = bgText ? bgText.querySelectorAll('span') : [];
+    const plate     = document.getElementById('dribbble-plate');
+    const footer    = document.getElementById('dribbble-footer');
 
-    // Background video — slowest layer
-    gsap.fromTo(bgVideo,
-      { yPercent: -10, scale: 1.15 },
-      {
-        yPercent: 10,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: showcase,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1
-        }
-      }
-    );
+    /* --- Layer 1: Background text — slowest, drifts horizontally --- */
+    if (bgSpans.length) {
+      bgSpans.forEach((span, i) => {
+        const direction = i % 2 === 0 ? 1 : -1;
 
-    // Floating ingredient words — medium speed, varied per word
-    words.forEach((word, i) => {
-      const speed = parseFloat(word.dataset.speed) || 0.5;
-      const direction = i % 2 === 0 ? 1 : -1;
-
-      gsap.fromTo(word,
-        {
-          y: 60 * speed * direction,
-          opacity: 0,
-          scale: 0.9
-        },
-        {
-          y: -80 * speed * direction,
-          opacity: 0.12,
-          scale: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: showcase,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1.5
+        // Horizontal drift
+        gsap.fromTo(span,
+          { x: 60 * direction },
+          {
+            x: -60 * direction,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 2
+            }
           }
-        }
-      );
+        );
 
-      // Subtle horizontal drift
-      gsap.to(word, {
-        x: 30 * direction * speed,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: showcase,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 2
-        }
+        // Opacity fade — text fades in as section enters viewport
+        gsap.fromTo(span,
+          { opacity: 0.02 },
+          {
+            opacity: 0.1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%',
+              end: 'center center',
+              scrub: 1
+            }
+          }
+        );
       });
-    });
+    }
 
-    // Isolated sandwich — fastest layer, floats upward
-    if (sandwich) {
-      gsap.fromTo(sandwich,
-        { y: 120, scale: 0.85, opacity: 0.6 },
+    /* --- Layer 2: Sandwich plate — fastest, floats upward with rotation --- */
+    if (plate) {
+      gsap.fromTo(plate,
+        { y: 100, scale: 0.88, rotation: -5 },
         {
-          y: -80,
-          scale: 1.05,
-          opacity: 1,
+          y: -60,
+          scale: 1,
+          rotation: 5,
           ease: 'none',
           scrollTrigger: {
-            trigger: showcase,
+            trigger: section,
             start: 'top 90%',
             end: 'bottom 10%',
             scrub: 0.8
           }
         }
       );
+    }
 
-      // Subtle rotation for depth
-      gsap.fromTo(sandwich,
-        { rotation: -3 },
+    /* --- Layer 3: Script text — medium speed, moves opposite --- */
+    if (script) {
+      gsap.fromTo(script,
+        { y: 40, opacity: 0 },
         {
-          rotation: 3,
+          y: -30,
+          opacity: 1,
           ease: 'none',
           scrollTrigger: {
-            trigger: showcase,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 2
+            trigger: section,
+            start: 'top 80%',
+            end: 'center center',
+            scrub: 1.2
+          }
+        }
+      );
+    }
+
+    /* --- Footer text entrance --- */
+    if (footer) {
+      gsap.fromTo(footer,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: footer,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
           }
         }
       );
@@ -163,13 +166,13 @@
   }
 
   /* ==========================================================
-     3. SCROLL REVEALS — GSAP-powered (replaces CSS-only)
+     3. SCROLL REVEALS — GSAP-powered
      ========================================================== */
   function initScrollReveals() {
     const targets = document.querySelectorAll('.reveal');
     if (!targets.length) return;
 
-    targets.forEach((el, i) => {
+    targets.forEach((el) => {
       gsap.fromTo(el,
         { opacity: 0, y: 40 },
         {
@@ -194,7 +197,7 @@
     const steps = document.querySelectorAll('.step');
     if (!steps.length) return;
 
-    steps.forEach((step, i) => {
+    steps.forEach((step) => {
       const number = step.querySelector('.step__number');
       const name   = step.querySelector('.step__name');
       const desc   = step.querySelector('.step__desc');
@@ -237,7 +240,7 @@
      ========================================================== */
   function init() {
     initHeroAnimation();
-    initParallax();
+    initDribbbleParallax();
     initScrollReveals();
     initStepAnimations();
   }
@@ -269,7 +272,6 @@
 
     targets.forEach(el => observer.observe(el));
 
-    // Still show hero words without GSAP
     document.querySelectorAll('.hero__word').forEach((w, i) => {
       setTimeout(() => {
         w.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

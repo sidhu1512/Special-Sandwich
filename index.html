@@ -10,7 +10,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -56,28 +56,45 @@
   <section class="arsenal" id="arsenal">
     <div class="container">
 
-      <!-- Parallax Showcase -->
-      <div class="parallax-showcase" id="parallax-showcase">
-        <video
-          class="parallax-showcase__bg"
-          src="asset/b-roll-1.mp4"
-          playsinline autoplay muted loop
-          aria-hidden="true"
-        ></video>
-        <div class="parallax-showcase__overlay" aria-hidden="true"></div>
-        <div class="parallax-showcase__words" aria-hidden="true">
-          <span class="parallax-word" data-speed="0.6">GHEE</span>
-          <span class="parallax-word" data-speed="0.5">TANDOORI</span>
-          <span class="parallax-word" data-speed="0.7">JALAPENOS</span>
-          <span class="parallax-word" data-speed="0.4">CHEESE</span>
-          <span class="parallax-word" data-speed="0.55">HERBS</span>
+      <!-- Dribbble-Inspired Cream Parallax Section -->
+      <div class="dribbble-section" id="dribbble-section">
+
+        <!-- Script heading -->
+        <p class="dribbble-section__script" id="dribbble-script">
+          Taste our Classic SSS
+        </p>
+
+        <!-- Repeating bold background text -->
+        <div class="dribbble-section__bg-text" id="dribbble-bg-text" aria-hidden="true">
+          <span>SIGNATURE SANDWICH</span>
+          <span>SIGNATURE SANDWICH</span>
+          <span>SIGNATURE SANDWICH</span>
+          <span>SIGNATURE SANDWICH</span>
+          <span>SIGNATURE SANDWICH</span>
+          <span>SIGNATURE SANDWICH</span>
         </div>
-        <img
-          class="parallax-showcase__hero-img"
-          src="asset/enhanced-sandwich-isolated.png"
-          alt="Enhanced isolated sandwich"
-          id="parallax-sandwich"
-        >
+
+        <!-- Floating sandwich plate -->
+        <div class="dribbble-section__plate-wrap" id="dribbble-plate">
+          <img
+            class="dribbble-section__plate"
+            src="asset/enhanced-sandwich-isolated.png"
+            alt="The SSS sandwich on a decorative plate — diagonal cut, cheese melting, chili flakes scattered."
+          >
+        </div>
+
+        <!-- Descriptive footer -->
+        <div class="dribbble-section__footer" id="dribbble-footer">
+          <p class="dribbble-section__desc">
+            A masterclass in texture. Ghee-toasted brown bread, open-faced egg fusion,
+            tandoori mayo, a single slice of Amul cheese, and an asymmetric scattering
+            of 3 jalapenos for dynamic heat distribution.
+          </p>
+          <p class="dribbble-section__credit">
+            Engineered in Pune. (Internal Use Only).
+          </p>
+        </div>
+
       </div>
 
       <div class="arsenal__grid">

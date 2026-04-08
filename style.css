@@ -309,73 +309,112 @@ a {
 }
 
 /* ============================================================
-   PARALLAX SHOWCASE
+   DRIBBBLE-INSPIRED CREAM PARALLAX SECTION
    ============================================================ */
-.parallax-showcase {
+.dribbble-section {
   position: relative;
   width: 100%;
-  height: 80vh;
-  min-height: 28rem;
-  max-height: 48rem;
+  min-height: 90vh;
+  background: #F9F9F0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   margin-bottom: var(--sp-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-2xl) var(--sp-lg);
 }
 
-.parallax-showcase__bg {
+/* Script heading */
+.dribbble-section__script {
+  position: relative;
+  z-index: 3;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: #B22222;
+  text-align: center;
+  margin-bottom: var(--sp-md);
+  will-change: transform;
+}
+
+/* Repeating bold background text */
+.dribbble-section__bg-text {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dribbble-section__bg-text span {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: rgba(178, 34, 34, 0.06);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  white-space: nowrap;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* Floating sandwich plate */
+.dribbble-section__plate-wrap {
+  position: relative;
+  z-index: 2;
+  width: clamp(18rem, 45vw, 32rem);
+  margin: var(--sp-lg) 0;
+  will-change: transform;
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.dribbble-section__plate {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
-  filter: brightness(0.4) saturate(1.2);
+  transition: transform 0.6s ease;
 }
 
-.parallax-showcase__overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 20%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  z-index: 1;
+.dribbble-section__plate-wrap:hover .dribbble-section__plate {
+  transform: scale(1.03) rotate(-2deg);
 }
 
-.parallax-showcase__words {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-xl);
-  padding: var(--sp-xl);
-}
-
-.parallax-word {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.06);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  will-change: transform;
-  user-select: none;
-}
-
-.parallax-showcase__hero-img {
-  position: absolute;
-  bottom: -5%;
-  left: 50%;
-  transform: translateX(-50%);
+/* Descriptive footer */
+.dribbble-section__footer {
+  position: relative;
   z-index: 3;
-  width: clamp(16rem, 40vw, 28rem);
-  height: auto;
-  filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.6));
-  will-change: transform;
+  text-align: center;
+  max-width: 36rem;
+  margin-top: var(--sp-md);
+}
+
+.dribbble-section__desc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: #3a3a3a;
+  margin-bottom: var(--sp-md);
+}
+
+.dribbble-section__credit {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
 }
 
 /* ============================================================
@@ -569,12 +608,16 @@ a {
     padding: var(--sp-lg) var(--sp-md);
   }
 
-  .parallax-showcase {
-    height: 60vh;
-    min-height: 20rem;
+  .dribbble-section {
+    min-height: 70vh;
+    padding: var(--sp-xl) var(--sp-md);
   }
 
-  .parallax-word {
-    font-size: 1.5rem;
+  .dribbble-section__plate-wrap {
+    width: clamp(14rem, 70vw, 22rem);
+  }
+
+  .dribbble-section__bg-text span {
+    font-size: 2rem;
   }
 }
