@@ -1,12 +1,32 @@
 /* ============================================================
-   SSS — Advanced Animations (GSAP + ScrollTrigger)
-   Dribbble-inspired cream parallax + hero split-text + hover
+   SSS — Kinetic Animations (GSAP + ScrollTrigger + JS)
    ============================================================ */
 (() => {
   'use strict';
 
+  /* ==========================================================
+     A. DYNAMIC FAVICON
+     ========================================================== */
+  function initDynamicFavicon() {
+    const favicon = document.getElementById('favicon');
+    const icons = [
+      'asset/sandwitch.png',
+      'asset/sandwith with plate.png'
+    ];
+    let currentIndex = 0;
+
+    if (favicon) {
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % icons.length;
+        favicon.href = icons[currentIndex];
+      }, 800);
+    }
+  }
+
+  /* ---- Wait for GSAP ---- */
   if (typeof gsap === 'undefined') {
     console.warn('GSAP not loaded. Falling back to basic reveals.');
+    initDynamicFavicon();
     fallbackReveal();
     return;
   }
@@ -14,7 +34,7 @@
   gsap.registerPlugin(ScrollTrigger);
 
   /* ==========================================================
-     1. HERO — Staggered split-text entry
+     B. HERO — Staggered split-text entry
      ========================================================== */
   function initHeroAnimation() {
     const badge  = document.querySelector('.hero__badge');
@@ -60,113 +80,85 @@
   }
 
   /* ==========================================================
-     2. DRIBBBLE CREAM SECTION — Multi-layer parallax
+     C. CLOCKWORK PARALLAX — Kinetic sandwich scroll rotation
      ========================================================== */
-  function initDribbbleParallax() {
-    const section   = document.getElementById('dribbble-section');
-    if (!section) return;
+  function initClockworkParallax() {
+    const clockworkObj = document.getElementById('kinetic-clockwork');
+    if (!clockworkObj) return;
 
-    const script    = document.getElementById('dribbble-script');
-    const bgText    = document.getElementById('dribbble-bg-text');
-    const bgSpans   = bgText ? bgText.querySelectorAll('span') : [];
-    const plate     = document.getElementById('dribbble-plate');
-    const footer    = document.getElementById('dribbble-footer');
+    // Tie rotation to scroll depth exactly like a clock face, heavily amplified
+    gsap.to(clockworkObj, {
+      rotation: 1440,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#kinetic',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.2
+      }
+    });
+  }
 
-    /* --- Layer 1: Background text — slowest, drifts horizontally --- */
-    if (bgSpans.length) {
-      bgSpans.forEach((span, i) => {
-        const direction = i % 2 === 0 ? 1 : -1;
-
-        // Horizontal drift
-        gsap.fromTo(span,
-          { x: 60 * direction },
-          {
-            x: -60 * direction,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 2
-            }
-          }
-        );
-
-        // Opacity fade — text fades in as section enters viewport
-        gsap.fromTo(span,
-          { opacity: 0.02 },
-          {
-            opacity: 0.1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 80%',
-              end: 'center center',
-              scrub: 1
-            }
-          }
-        );
+  /* ==========================================================
+     C2. ARSENAL KINETIC — Rotating Arsenal images on scroll
+     ========================================================== */
+  function initArsenalClockwork() {
+    const arsenalImg = document.getElementById('arsenal-img');
+    if (arsenalImg) {
+      gsap.to(arsenalImg, {
+        rotation: 360,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.arsenal',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.2
+        }
       });
     }
 
-    /* --- Layer 2: Sandwich plate — fastest, floats upward with rotation --- */
-    if (plate) {
-      gsap.fromTo(plate,
-        { y: 100, scale: 0.88, rotation: -5 },
-        {
-          y: -60,
-          scale: 1,
-          rotation: 5,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 90%',
-            end: 'bottom 10%',
-            scrub: 0.8
-          }
+    const showcasePlateImg = document.querySelector('.showcase__plate');
+    if (showcasePlateImg) {
+      gsap.to(showcasePlateImg, {
+        rotation: 360,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#showcase',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.2
         }
-      );
-    }
-
-    /* --- Layer 3: Script text — medium speed, moves opposite --- */
-    if (script) {
-      gsap.fromTo(script,
-        { y: 40, opacity: 0 },
-        {
-          y: -30,
-          opacity: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            end: 'center center',
-            scrub: 1.2
-          }
-        }
-      );
-    }
-
-    /* --- Footer text entrance --- */
-    if (footer) {
-      gsap.fromTo(footer,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: footer,
-            start: 'top 90%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
+      });
     }
   }
 
   /* ==========================================================
-     3. SCROLL REVEALS — GSAP-powered
+     D. MULTI-LAYER DEPTH — Showcase section scaling/float
+     ========================================================== */
+  function initShowcaseParallax() {
+    const plate = document.getElementById('showcase-plate');
+    if (!plate) return;
+
+    // Scale up from 0.8 to 1 and float slightly upwards as it enters viewport
+    gsap.fromTo(plate,
+      { scale: 0.8, y: 50, opacity: 0.8 },
+      {
+        scale: 1,
+        y: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#showcase',
+          start: 'top 85%',
+          end: 'center center',
+          scrub: 1
+        }
+      }
+    );
+  }
+
+  /* ==========================================================
+     E. SCROLL REVEALS & STEPS
      ========================================================== */
   function initScrollReveals() {
     const targets = document.querySelectorAll('.reveal');
@@ -190,9 +182,6 @@
     });
   }
 
-  /* ==========================================================
-     4. STEP CARDS — Scroll-triggered entrance
-     ========================================================== */
   function initStepAnimations() {
     const steps = document.querySelectorAll('.step');
     if (!steps.length) return;
@@ -239,8 +228,12 @@
      INIT
      ========================================================== */
   function init() {
+    initDynamicFavicon();   // A. Dynamic Favicon
+    // Marquee is handled entirely by CSS animation for smooth loop
     initHeroAnimation();
-    initDribbbleParallax();
+    initClockworkParallax(); // C. Clockwork parallax
+    initArsenalClockwork();  // C2. Arsenal rotating images
+    initShowcaseParallax();  // D. Showcase multi-layer depth
     initScrollReveals();
     initStepAnimations();
   }
