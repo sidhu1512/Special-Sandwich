@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSS — Signature Sandwich by Siddharth</title>
+  <meta name="description" content="A precision-engineered egg sandwich. Brown bread, ghee, tandoori mayo, Amul cheese, jalapenos, Jamaican spice. Built from scratch. Every time.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <video
+      class="hero__video"
+      src="asset/hero-video.mp4"
+      playsinline autoplay muted loop
+      aria-hidden="true"
+    ></video>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <div class="hero__badge">est. whenever I'm hungry</div>
+      <h1 class="hero__title">
+        <span>SSS</span><br>
+        Signature Sandwich<br>
+        by Siddharth
+      </h1>
+      <p class="hero__sub">
+        Not a recipe. A repeatable process. Two eggs, brown bread, ghee, 
+        and a strict assembly order that hasn't changed in years.
+      </p>
+      <a href="#arsenal" class="hero__cta">
+        See the build
+        <span class="hero__cta-arrow" aria-hidden="true">↓</span>
+      </a>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== THE ARSENAL (Ingredients) ========== -->
+  <section class="arsenal" id="arsenal">
+    <div class="container">
+      <div class="arsenal__grid">
+
+        <div class="arsenal__image-wrap reveal">
+          <img
+            class="arsenal__image"
+            src="asset/food-shot.jpeg"
+            alt="Two slices of brown bread in a pan — eggs cracked on top, cheese melting through, dusted with chili flakes and mixed herbs."
+            loading="lazy"
+          >
+        </div>
+
+        <div class="reveal">
+          <span class="section-label">01 — The Arsenal</span>
+          <h2 class="section-title">What goes in.</h2>
+          <ul class="arsenal__list">
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">2×</span> Eggs
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">2×</span> Brown bread slices
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">—</span> Ghee
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">—</span> Tandoori mayo
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">1×</span> Amul cheese slice
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">3×</span> Jalapenos
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">—</span> Mixed herbs
+            </li>
+            <li class="arsenal__item">
+              <span class="arsenal__item-qty">—</span> Jamaican spice
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THE ARCHITECTURE (Steps) ========== -->
+  <section class="architecture" id="architecture">
+    <div class="container">
+
+      <div class="architecture__header reveal">
+        <span class="section-label">02 — The Architecture</span>
+        <h2 class="section-title">How it's built.</h2>
+      </div>
+
+      <!-- Step 1 — with b-roll video -->
+      <article class="step reveal" id="step-1">
+        <video
+          class="step__video"
+          src="asset/b-roll-1.mp4"
+          playsinline autoplay muted loop
+          aria-hidden="true"
+        ></video>
+        <div class="step__overlay" aria-hidden="true"></div>
+        <div class="step__content">
+          <div class="step__number">Step 01</div>
+          <h3 class="step__name">The Bind</h3>
+          <p class="step__desc">
+            Ghee in a hot pan. Crack both eggs directly onto the bread slices already laid flat. 
+            The whites bond the bread to the protein — no flipping, no separation. 
+            One unit from the start.
+          </p>
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="step step--card reveal" id="step-2">
+        <div class="step__content">
+          <div class="step__number">Step 02</div>
+          <h3 class="step__name">The Inversion</h3>
+          <p class="step__desc">
+            Flip both slices egg-side down once the whites set. 
+            The bread face toasts in residual ghee while the egg finishes 
+            from conducted heat below. Two-sided cook, single flip.
+          </p>
+        </div>
+      </article>
+
+      <!-- Step 3 — with b-roll video -->
+      <article class="step reveal" id="step-3">
+        <video
+          class="step__video"
+          src="asset/b-roll-2.mp4"
+          playsinline autoplay muted loop
+          aria-hidden="true"
+        ></video>
+        <div class="step__overlay" aria-hidden="true"></div>
+        <div class="step__content">
+          <div class="step__number">Step 03</div>
+          <h3 class="step__name">Asymmetrical Flavoring</h3>
+          <p class="step__desc">
+            Tandoori mayo on one slice. Cheese centered on the other. 
+            Jalapenos scattered — not evenly, on purpose. 
+            You want uneven heat distribution per bite.
+          </p>
+        </div>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="step step--card reveal" id="step-4">
+        <div class="step__content">
+          <div class="step__number">Step 04</div>
+          <h3 class="step__name">The Dusting</h3>
+          <p class="step__desc">
+            Mixed herbs first — they stick to the wet surfaces. 
+            Jamaican spice on top. The order matters: herbs for aroma, 
+            the Jamaican hit for residual heat that builds after the first bite.
+          </p>
+        </div>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="step step--card reveal" id="step-5">
+        <div class="step__content">
+          <div class="step__number">Step 05</div>
+          <h3 class="step__name">The Fold</h3>
+          <p class="step__desc">
+            Stack. Press gently — not enough to squeeze out mayo, 
+            enough to fuse the layers. Cut diagonal. 
+            The cross-section should show distinct strata: 
+            bread, egg, cheese, bread.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">
+        <span>SSS</span> — built &amp; deployed by Siddharth
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
