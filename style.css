@@ -1,11 +1,10 @@
 /* ============================================================
    SSS — Signature Sandwich by Siddharth
-   Design System & Stylesheet
+   Kinetic Design System
    ============================================================ */
 
 /* --- Design Tokens --- */
 :root {
-  /* Palette */
   --clr-bg:          #0a0a0a;
   --clr-surface:     #111111;
   --clr-surface-alt: #161616;
@@ -16,13 +15,13 @@
   --clr-accent-dim:  rgba(200, 164, 90, 0.12);
   --clr-overlay:     rgba(0, 0, 0, 0.6);
   --clr-overlay-heavy: rgba(0, 0, 0, 0.75);
+  --clr-marquee:     #B22222;
 
-  /* Typography */
   --font-heading: 'Outfit', sans-serif;
   --font-body:    'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
+  --font-serif:   'Playfair Display', serif;
 
-  /* Spacing scale (4px base) */
   --sp-xs:  0.25rem;
   --sp-sm:  0.5rem;
   --sp-md:  1rem;
@@ -30,16 +29,13 @@
   --sp-xl:  4rem;
   --sp-2xl: 8rem;
 
-  /* Layout */
   --max-width: 72rem;
   --radius:    0.375rem;
   --radius-lg: 0.75rem;
 }
 
 /* --- Reset --- */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -57,17 +53,16 @@ body {
   color: var(--clr-text);
   line-height: 1.6;
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-img, video {
-  display: block;
-  max-width: 100%;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-a {
-  color: var(--clr-accent);
-  text-decoration: none;
-}
+img, video { display: block; max-width: 100%; }
+a { color: var(--clr-accent); text-decoration: none; }
 
 /* --- Utility --- */
 .container {
@@ -77,18 +72,6 @@ a {
   padding-inline: var(--sp-lg);
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
-
-/* --- Section shared --- */
 .section-label {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -109,7 +92,7 @@ a {
 }
 
 /* ============================================================
-   HERO
+   HERO — with Clockwork Sandwich
    ============================================================ */
 .hero {
   position: relative;
@@ -140,7 +123,7 @@ a {
 
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   padding: var(--sp-lg);
 }
@@ -169,9 +152,14 @@ a {
   margin-bottom: var(--sp-md);
 }
 
-.hero__title span {
-  color: var(--clr-accent);
+.hero__word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(2.5rem);
+  color: #ffffff;
 }
+
+.hero__word--accent { color: var(--clr-accent); }
 
 .hero__sub {
   font-size: clamp(0.875rem, 1.5vw, 1.125rem);
@@ -194,18 +182,16 @@ a {
   transition: gap 0.3s ease;
 }
 
-.hero__cta:hover {
-  gap: var(--sp-md);
-}
+.hero__cta:hover { gap: var(--sp-md); }
 
 .hero__cta-arrow {
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
-.hero__cta:hover .hero__cta-arrow {
-  transform: translateY(4px);
-}
+.hero__cta:hover .hero__cta-arrow { transform: translateY(4px); }
+
+
 
 /* Scroll indicator */
 .hero__scroll {
@@ -213,11 +199,7 @@ a {
   bottom: var(--sp-lg);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-sm);
+  z-index: 3;
 }
 
 .hero__scroll-line {
@@ -233,10 +215,88 @@ a {
 }
 
 /* ============================================================
-   THE ARSENAL (Ingredients)
+   KINETIC ELEMENTS
+   ============================================================ */
+.kinetic {
+  padding: var(--sp-2xl) 0;
+  background: var(--clr-bg);
+  overflow: hidden;
+  position: relative;
+}
+
+.kinetic__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  align-items: center;
+  gap: var(--sp-xl);
+}
+
+.kinetic__text {
+  position: relative;
+  z-index: 2;
+}
+
+.kinetic__clockwork {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 38rem;
+  margin: 0 auto;
+  will-change: transform;
+}
+
+.kinetic__clockwork-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2rem 4rem rgba(200, 164, 90, 0.2));
+}
+
+/* ============================================================
+   SHOWCASE — Plated Sandwich + Info
+   ============================================================ */
+.showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-xl);
+  align-items: center;
+  padding: var(--sp-2xl) 0;
+}
+
+.showcase__plate-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  will-change: transform;
+}
+
+.showcase__plate {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.4));
+  transition: transform 0.5s ease;
+}
+
+.showcase__plate-wrap:hover .showcase__plate {
+  transform: scale(1.03) rotate(-2deg);
+}
+
+.showcase__info {
+  max-width: 28rem;
+}
+
+.showcase__desc {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--clr-text-muted);
+  margin-top: var(--sp-md);
+}
+
+/* ============================================================
+   THE ARSENAL (Ingredients Grid)
    ============================================================ */
 .arsenal {
-  padding: var(--sp-2xl) 0;
+  padding: 0 0 var(--sp-2xl);
   background: var(--clr-surface);
 }
 
@@ -249,30 +309,20 @@ a {
 
 .arsenal__image-wrap {
   position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-}
-
-.arsenal__image-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-lg);
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .arsenal__image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2rem 4rem rgba(0, 0, 0, 0.4));
   transition: transform 0.6s ease;
 }
 
-.arsenal__image-wrap:hover .arsenal__image {
-  transform: scale(1.04);
-}
+.arsenal__image-wrap:hover .arsenal__image { transform: scale(1.04); }
 
 .arsenal__list {
   list-style: none;
@@ -320,6 +370,13 @@ a {
   min-height: 20rem;
   display: flex;
   align-items: flex-end;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease;
+}
+
+.step:hover {
+  transform: scale(1.02);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
 }
 
 .step__video {
@@ -340,7 +397,10 @@ a {
     transparent 60%
   );
   z-index: 1;
+  transition: opacity 0.4s ease;
 }
+
+.step:hover .step__overlay { opacity: 0.4; }
 
 .step__content {
   position: relative;
@@ -364,7 +424,10 @@ a {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: var(--sp-sm);
+  transition: color 0.4s ease;
 }
+
+.step:hover .step__name { color: var(--clr-accent); }
 
 .step__desc {
   font-size: 0.9375rem;
@@ -373,16 +436,105 @@ a {
   line-height: 1.7;
 }
 
-/* Steps without video — solid card */
 .step--card {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   align-items: center;
   min-height: 12rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
 }
 
-.step--card .step__content {
-  padding: var(--sp-xl) var(--sp-lg);
+.step--card:hover {
+  transform: scale(1.02);
+  border-color: var(--clr-accent);
+  box-shadow: 0 1.5rem 4rem rgba(200, 164, 90, 0.08);
+}
+
+/* ============================================================
+   MACROS (System Specs)
+   ============================================================ */
+.macros {
+  padding: var(--sp-2xl) 0 var(--sp-xl);
+  background: var(--clr-surface-alt);
+}
+
+.macros__header {
+  text-align: center;
+  margin-bottom: var(--sp-xl);
+}
+
+.macros__grid {
+  align-items: flex-start;
+  margin-top: var(--sp-xl);
+}
+
+.macros__subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: var(--sp-lg);
+}
+
+.macros__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.macros__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-sm);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.macros__stat {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: var(--clr-accent);
+  min-width: 5.5rem;
+}
+
+.macros__label {
+  font-size: 1rem;
+  color: var(--clr-text);
+  font-weight: 500;
+}
+
+.macros__note {
+  font-size: 0.875rem;
+  color: var(--clr-text-muted);
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+.macros__breakdown-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.macros__item-small {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.macros__item-text {
+  font-size: 0.9375rem;
+  color: var(--clr-text);
+}
+
+.macros__tertiary {
+  color: var(--clr-text-muted);
+  font-size: 0.875rem;
 }
 
 /* ============================================================
@@ -402,8 +554,16 @@ a {
   color: var(--clr-text-muted);
 }
 
-.footer__text span {
-  color: var(--clr-accent);
+.footer__text span { color: var(--clr-accent); }
+
+.footer__credit {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  opacity: 0.5;
+  margin-top: var(--sp-sm);
 }
 
 /* ============================================================
@@ -424,30 +584,20 @@ a {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 64rem) {
-  .arsenal__grid {
+  .arsenal__grid,
+  .showcase,
+  .kinetic__grid {
     grid-template-columns: 1fr;
     gap: var(--sp-lg);
   }
 
-  .arsenal__image-wrap {
-    aspect-ratio: 16 / 9;
-  }
+  .arsenal__image-wrap { aspect-ratio: 16 / 9; }
+  .showcase__plate-wrap { max-width: 20rem; }
 }
 
 @media (max-width: 40rem) {
-  .hero__badge {
-    font-size: 0.5625rem;
-  }
-
-  .arsenal__list {
-    grid-template-columns: 1fr;
-  }
-
-  .step {
-    min-height: 16rem;
-  }
-
-  .step__content {
-    padding: var(--sp-lg) var(--sp-md);
-  }
+  .hero__badge { font-size: 0.5625rem; }
+  .arsenal__list { grid-template-columns: 1fr; }
+  .step { min-height: 16rem; }
+  .step__content { padding: var(--sp-lg) var(--sp-md); }
 }

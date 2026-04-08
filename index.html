@@ -7,16 +7,19 @@
   <meta name="description" content="A precision-engineered egg sandwich. Brown bread, ghee, tandoori mayo, Amul cheese, jalapenos, Jamaican spice. Built from scratch. Every time.">
   <meta name="theme-color" content="#0a0a0a">
 
+  <!-- Dynamic Favicon (swapped by JS) -->
+  <link rel="icon" type="image/png" id="favicon" href="asset/sandwitch.png">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ========== HERO ========== -->
+  <!-- ========== HERO — Clockwork Parallax ========== -->
   <section class="hero" id="hero">
     <video
       class="hero__video"
@@ -28,13 +31,17 @@
 
     <div class="hero__content">
       <div class="hero__badge">est. whenever I'm hungry</div>
-      <h1 class="hero__title">
-        <span>SSS</span><br>
-        Signature Sandwich<br>
-        by Siddharth
+      <h1 class="hero__title" id="hero-title">
+        <span class="hero__word hero__word--accent">SSS</span>
+        <br>
+        <span class="hero__word">Signature</span>
+        <span class="hero__word">Sandwich</span>
+        <br>
+        <span class="hero__word">by</span>
+        <span class="hero__word">Siddharth</span>
       </h1>
       <p class="hero__sub">
-        Not a recipe. A repeatable process. Two eggs, brown bread, ghee, 
+        Not a recipe. A repeatable process. Two eggs, brown bread, ghee,
         and a strict assembly order that hasn't changed in years.
       </p>
       <a href="#arsenal" class="hero__cta">
@@ -51,20 +58,40 @@
   <!-- ========== THE ARSENAL (Ingredients) ========== -->
   <section class="arsenal" id="arsenal">
     <div class="container">
+
+      <!-- Showcase with plated sandwich -->
+      <div class="showcase" id="showcase">
+        <div class="showcase__plate-wrap" id="showcase-plate">
+          <img
+            class="showcase__plate"
+            src="asset/sandwith with plate.png"
+            alt="The SSS sandwich on a Corelle plate — diagonal cut, cheese melting, chili flakes scattered."
+          >
+        </div>
+        <div class="showcase__info">
+          <span class="section-label">01 — The Arsenal</span>
+          <h2 class="section-title">What goes in.</h2>
+          <p class="showcase__desc">
+            A masterclass in texture. Ghee-toasted brown bread, open-faced egg fusion,
+            tandoori mayo, a single slice of Amul cheese, and an asymmetric scattering
+            of 3 jalapenos for dynamic heat distribution.
+          </p>
+        </div>
+      </div>
+
       <div class="arsenal__grid">
 
         <div class="arsenal__image-wrap reveal">
           <img
             class="arsenal__image"
-            src="asset/food-shot.jpeg"
+            id="arsenal-img"
+            src="asset/food-shoot-transparent.png"
             alt="Two slices of brown bread in a pan — eggs cracked on top, cheese melting through, dusted with chili flakes and mixed herbs."
             loading="lazy"
           >
         </div>
 
         <div class="reveal">
-          <span class="section-label">01 — The Arsenal</span>
-          <h2 class="section-title">What goes in.</h2>
           <ul class="arsenal__list">
             <li class="arsenal__item">
               <span class="arsenal__item-qty">2×</span> Eggs
@@ -97,12 +124,32 @@
     </div>
   </section>
 
+  <!-- ========== THE KINETIC ELEMENTS ========== -->
+  <section class="kinetic" id="kinetic">
+    <div class="container kinetic__grid">
+      <div class="kinetic__text reveal">
+        <span class="section-label">02 — The Kinetic Elements</span>
+        <h2 class="section-title">Visualizing the Crunch.</h2>
+        <p class="showcase__desc">
+          Every layer of the SSS sandwich is designed for maximum flavor distribution. This isn't just about throwing ingredients together; it's about the geometry of taste. As you scroll, witness the exact rotation of the open-faced masterclass.
+        </p>
+      </div>
+      <div class="kinetic__clockwork" id="kinetic-clockwork">
+        <img
+          class="kinetic__clockwork-img"
+          src="asset/sandwitch.png"
+          alt="Open-face SSS sandwich, transparent background"
+        >
+      </div>
+    </div>
+  </section>
+
   <!-- ========== THE ARCHITECTURE (Steps) ========== -->
   <section class="architecture" id="architecture">
     <div class="container">
 
       <div class="architecture__header reveal">
-        <span class="section-label">02 — The Architecture</span>
+        <span class="section-label">03 — The Architecture</span>
         <h2 class="section-title">How it's built.</h2>
       </div>
 
@@ -119,8 +166,8 @@
           <div class="step__number">Step 01</div>
           <h3 class="step__name">The Bind</h3>
           <p class="step__desc">
-            Heat a light layer of ghee. Crack two eggs side-by-side directly into the pan. 
-            Immediately place one slice of brown bread on top of each cooking egg 
+            Heat a light layer of ghee. Crack two eggs side-by-side directly into the pan.
+            Immediately place one slice of brown bread on top of each cooking egg
             so the whites bond to the bread.
           </p>
         </div>
@@ -132,8 +179,8 @@
           <div class="step__number">Step 02</div>
           <h3 class="step__name">The Inversion</h3>
           <p class="step__desc">
-            Once the lower half of the eggs are set, execute a seamless flip. 
-            The brown bread now faces the heat to achieve maximum crispness in the ghee, 
+            Once the lower half of the eggs are set, execute a seamless flip.
+            The brown bread now faces the heat to achieve maximum crispness in the ghee,
             while the cooked eggs face upward, serving as a hot canvas.
           </p>
         </div>
@@ -152,8 +199,8 @@
           <div class="step__number">Step 03</div>
           <h3 class="step__name">Asymmetrical Flavoring</h3>
           <p class="step__desc">
-            Focus all toppings on ONE side only. Apply Tandoori mayo and center the Amul cheese slice. 
-            Place exactly 3 jalapeno slices on three corners. 
+            Focus all toppings on ONE side only. Apply Tandoori mayo and center the Amul cheese slice.
+            Place exactly 3 jalapeno slices on three corners.
             Deliberately leave the fourth corner empty to create a varied flavor profile per bite.
           </p>
         </div>
@@ -165,7 +212,7 @@
           <div class="step__number">Step 04</div>
           <h3 class="step__name">The Dusting</h3>
           <p class="step__desc">
-            Dust the topped side with mixed herbs, chilli flakes, and Jamaican spice. 
+            Dust the topped side with mixed herbs, chilli flakes, and Jamaican spice.
             The order builds a complex, smoky heat.
           </p>
         </div>
@@ -177,12 +224,85 @@
           <div class="step__number">Step 05</div>
           <h3 class="step__name">The Fold</h3>
           <p class="step__desc">
-            Check the bottom bread for a deep golden crisp. 
-            Fold the empty half over onto the topped half to seal the sandwich 
+            Check the bottom bread for a deep golden crisp.
+            Fold the empty half over onto the topped half to seal the sandwich
             and melt the cheese. Cut diagonal.
           </p>
         </div>
       </article>
+
+    </div>
+  </section>
+
+  <!-- ========== MACROS (System Specs & Macros) ========== -->
+  <section class="macros" id="macros">
+    <div class="container">
+      
+      <div class="macros__header reveal">
+        <span class="section-label">04 — System Specs & Macros</span>
+        <h2 class="section-title">Fuel payload for a double-stack execution.</h2>
+        <p class="showcase__desc" style="max-width: 48rem; margin: 0 auto; text-align: center;">
+          This is a high-output build designed for sustained energy. The combination of complete proteins (eggs, cheese), slow-digesting complex carbohydrates (brown bread), and dense culinary fats (ghee, mayo) creates a massive, calculated caloric payload.
+        </p>
+      </div>
+
+      <div class="arsenal__grid macros__grid reveal">
+        
+        <!-- Total Output -->
+        <div class="macros__output">
+          <h3 class="macros__subtitle">Total Output <span class="macros__note">(2 Sandwiches)</span></h3>
+          <ul class="macros__list">
+            <li class="macros__item">
+              <span class="macros__stat">~1,120</span>
+              <span class="macros__label">Calories <span class="macros__note">kcal</span></span>
+            </li>
+            <li class="macros__item">
+              <span class="macros__stat">44g</span>
+              <span class="macros__label">Protein <span class="macros__note">(Structural repair)</span></span>
+            </li>
+            <li class="macros__item">
+              <span class="macros__stat">58g</span>
+              <span class="macros__label">Carbohydrates <span class="macros__note">(Primary fuel)</span></span>
+            </li>
+            <li class="macros__item">
+              <span class="macros__stat">78g</span>
+              <span class="macros__label">Fats <span class="macros__note">(Sustained burn)</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Granular Breakdown -->
+        <div class="macros__breakdown">
+          <h3 class="macros__subtitle">Granular Breakdown</h3>
+          <ul class="macros__breakdown-list">
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">4×</span> 
+              <span class="macros__item-text">Whole Eggs <span class="macros__tertiary">— 24g Protein / 280 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">4×</span> 
+              <span class="macros__item-text">Brown Bread Slices <span class="macros__tertiary">— 12g Protein / 56g Carbs / 300 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">2×</span> 
+              <span class="macros__item-text">Amul Cheese Slices <span class="macros__tertiary">— 8g Protein / 120 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">2×</span> 
+              <span class="macros__item-text">Tbsp Pure Ghee <span class="macros__tertiary">(Pan sear) — 28g Fat / 240 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">2×</span> 
+              <span class="macros__item-text">Tbsp Tandoori Mayo <span class="macros__tertiary">(Core layer) — 20g Fat / 180 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">—</span> 
+              <span class="macros__item-text">Jalapenos & Spices <span class="macros__tertiary">— Trace elements / Heat activation</span></span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
 
     </div>
   </section>
@@ -193,9 +313,13 @@
       <p class="footer__text">
         <span>SSS</span> — built &amp; deployed by Siddharth
       </p>
+      <p class="footer__credit">Engineered in Pune. (Internal Use Only).</p>
     </div>
   </footer>
 
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
