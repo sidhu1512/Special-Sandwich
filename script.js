@@ -86,34 +86,26 @@
     const clockworkObj = document.getElementById('kinetic-clockwork');
     if (!clockworkObj) return;
 
-    // Tie rotation to scroll depth exactly like a clock face, heavily amplified
+    // Continuous motion instead of scroll-tied
     gsap.to(clockworkObj, {
-      rotation: 1440,
+      rotation: 360,
+      duration: 30,
       ease: 'none',
-      scrollTrigger: {
-        trigger: '#kinetic',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.2
-      }
+      repeat: -1
     });
   }
 
   /* ==========================================================
-     C2. ARSENAL KINETIC — Rotating Arsenal images on scroll
+     C2. ARSENAL KINETIC — Rotating Arsenal images
      ========================================================== */
   function initArsenalClockwork() {
     const arsenalImg = document.getElementById('arsenal-img');
     if (arsenalImg) {
       gsap.to(arsenalImg, {
         rotation: 360,
+        duration: 40,
         ease: 'none',
-        scrollTrigger: {
-          trigger: '.arsenal',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.2
-        }
+        repeat: -1
       });
     }
 
@@ -121,13 +113,9 @@
     if (showcasePlateImg) {
       gsap.to(showcasePlateImg, {
         rotation: 360,
+        duration: 40,
         ease: 'none',
-        scrollTrigger: {
-          trigger: '#showcase',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.2
-        }
+        repeat: -1
       });
     }
   }
@@ -183,7 +171,7 @@
   }
 
   function initStepAnimations() {
-    const steps = document.querySelectorAll('.step');
+    const steps = document.querySelectorAll('.step-card');
     if (!steps.length) return;
 
     steps.forEach((step) => {
@@ -225,17 +213,59 @@
   }
 
   /* ==========================================================
+     F. KEYBOARD PRESENTATION NAVIGATION
+     ========================================================== */
+  function initKeyboardNavigation() {
+    const sections = Array.from(document.querySelectorAll('section'));
+    let isScrolling = false;
+
+    window.addEventListener('keydown', (e) => {
+      if (['Space', 'ArrowDown', 'ArrowRight'].includes(e.code) && !e.shiftKey) {
+        e.preventDefault();
+        if (isScrolling) return;
+
+        const currentScroll = window.scrollY;
+        const targetIndex = sections.findIndex(sec => sec.offsetTop > currentScroll + 10);
+        
+        if (targetIndex !== -1) {
+          isScrolling = true;
+          sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => { isScrolling = false; }, 800);
+        }
+      } else if (['ArrowUp', 'ArrowLeft'].includes(e.code) || (e.code === 'Space' && e.shiftKey)) {
+        e.preventDefault();
+        if (isScrolling) return;
+
+        const currentScroll = window.scrollY;
+        let targetIndex = -1;
+        for (let i = sections.length - 1; i >= 0; i--) {
+           if (sections[i].offsetTop < currentScroll - 10) {
+               targetIndex = i;
+               break;
+           }
+        }
+        
+        if (targetIndex !== -1) {
+          isScrolling = true;
+          sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => { isScrolling = false; }, 800);
+        }
+      }
+    });
+  }
+
+  /* ==========================================================
      INIT
      ========================================================== */
   function init() {
     initDynamicFavicon();   // A. Dynamic Favicon
-    // Marquee is handled entirely by CSS animation for smooth loop
     initHeroAnimation();
     initClockworkParallax(); // C. Clockwork parallax
     initArsenalClockwork();  // C2. Arsenal rotating images
     initShowcaseParallax();  // D. Showcase multi-layer depth
     initScrollReveals();
     initStepAnimations();
+    initKeyboardNavigation(); // F. Presentation space navigation
   }
 
   /* ==========================================================
