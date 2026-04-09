@@ -622,6 +622,20 @@ a { color: var(--clr-accent); text-decoration: none; }
 
   .arsenal__image-wrap { aspect-ratio: 16 / 9; }
   .showcase__plate-wrap { max-width: 20rem; }
+
+  /* Mobile tweaks for Split Presentation Layout */
+  .split-layout__text {
+    padding: var(--sp-lg);
+  }
+  
+  .macros {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto; /* permit scrolling if table is tall on tablets/phones */
+  }
+  .macros__grid {
+    gap: var(--sp-md);
+  }
 }
 
 @media (max-width: 40rem) {
@@ -629,4 +643,15 @@ a { color: var(--clr-accent); text-decoration: none; }
   .arsenal__list { grid-template-columns: 1fr; }
   .step { min-height: 16rem; }
   .step__content { padding: var(--sp-lg) var(--sp-md); }
+
+  /* Tighter padding on very small phones */
+  .split-layout__text {
+    padding: var(--sp-md);
+    flex: 1.2; /* slightly more room for text */
+  }
+  .split-layout__media {
+    height: 40vh; /* slightly less room for media */
+  }
+  .macros__item { flex-direction: column; gap: var(--sp-xs); align-items: flex-start; }
+  .macros__item-small { flex-direction: column; }
 }
