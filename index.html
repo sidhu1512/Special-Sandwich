@@ -24,6 +24,17 @@
 
 <body>
 
+  <!-- ========== PRE-LOADER ========== -->
+  <div class="loader" id="page-loader">
+    <div class="loader__content">
+      <span class="loader__title">SSS</span>
+      <div class="loader__progress-bar">
+        <div class="loader__progress-fill" id="loader-fill"></div>
+      </div>
+      <span class="loader__status" id="loader-status">Preheating the pan...</span>
+    </div>
+  </div>
+
   <!-- ========== HERO — Clockwork Parallax ========== -->
   <section class="hero" id="hero">
     <video class="hero__video" src="asset/hero-video.mp4" playsinline autoplay muted loop aria-hidden="true"></video>
@@ -76,16 +87,28 @@
               <span class="arsenal__item-qty">2×</span> Brown bread slices
             </li>
             <li class="arsenal__item">
-              <span class="arsenal__item-qty">1/2</span> Ghee
+              <span class="arsenal__item-qty" style="display: inline-flex; align-items: center;">
+                ½ 
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; opacity: 0.8;">
+                  <path d="M6 14C4.343 14 3 12.657 3 11C3 7.686 5.686 5 9 5C12.314 5 15 7.686 15 11C15 12.657 13.657 14 12 14H6Z"/>
+                  <path d="M14 13L21 20"/>
+                </svg>
+              </span> Ghee
             </li>
             <li class="arsenal__item">
-              <span class="arsenal__item-qty">1/2</span> Tandoori mayo
+              <span class="arsenal__item-qty" style="display: inline-flex; align-items: center;">
+                ½ 
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; opacity: 0.8;">
+                  <path d="M6 14C4.343 14 3 12.657 3 11C3 7.686 5.686 5 9 5C12.314 5 15 7.686 15 11C15 12.657 13.657 14 12 14H6Z"/>
+                  <path d="M14 13L21 20"/>
+                </svg>
+              </span> Tandoori mayo
             </li>
             <li class="arsenal__item">
               <span class="arsenal__item-qty">1×</span> Amul cheese slice
             </li>
             <li class="arsenal__item">
-              <span class="arsenal__item-qty">3×</span> Jalapenos
+              <span class="arsenal__item-qty">3×</span> Jalapenos slice
             </li>
             <li class="arsenal__item">
               <span class="arsenal__item-qty">—</span> Mixed herbs
@@ -146,7 +169,8 @@
       </div>
       <div class="split-layout__media center-media">
         <div class="kinetic__clockwork" id="kinetic-clockwork">
-          <img class="kinetic__clockwork-img" src="asset/sandwitch.png" alt="Open-face SSS sandwich" style="max-height: 70vh;">
+          <img class="kinetic__clockwork-img" src="asset/sandwitch.png" alt="Open-face SSS sandwich"
+            style="max-height: 70vh;">
         </div>
       </div>
     </div>
@@ -184,82 +208,87 @@
   <!-- ========== MACROS (System Specs & Macros) ========== -->
   <section class="macros" id="macros">
     <div class="container">
-    <div class="macros__header reveal">
-      <span class="section-label">04 — Macro & Nutritional Breakdown</span>
-      <h2 class="section-title">The Fuel</h2>
-      <p class="showcase__desc" style="max-width: 48rem; margin: 0 auto; text-align: center;">
-        A highly balanced meal with excellent protein content for muscle recovery and complex carbs for sustained
-        energy.
-      </p>
-    </div>
-
-    <div class="arsenal__grid macros__grid reveal">
-
-      <!-- Total Output -->
-      <div class="macros__output">
-        <h3 class="macros__subtitle">Total Output <span class="macros__note">(Approx.)</span></h3>
-        <ul class="macros__list">
-          <li class="macros__item">
-            <span class="macros__stat">~441</span>
-            <span class="macros__label">Calories <span class="macros__note">kcal</span></span>
-          </li>
-          <li class="macros__item">
-            <span class="macros__stat">22g</span>
-            <span class="macros__label">Protein <span class="macros__note">(Muscle recovery)</span></span>
-          </li>
-          <li class="macros__item">
-            <span class="macros__stat">32g</span>
-            <span class="macros__label">Carbohydrates <span class="macros__note">(Sustained energy)</span></span>
-          </li>
-          <li class="macros__item">
-            <span class="macros__stat">25g</span>
-            <span class="macros__label">Fats <span class="macros__note">(Balanced)</span></span>
-          </li>
-        </ul>
+      <div class="macros__header reveal">
+        <span class="section-label">04 — Macro & Nutritional Breakdown</span>
+        <h2 class="section-title">The Fuel</h2>
+        <p class="showcase__desc" style="max-width: 48rem; margin: 0 auto; text-align: center;">
+          A highly balanced meal with excellent protein content for muscle recovery and complex carbs for sustained
+          energy.
+        </p>
       </div>
 
-      <!-- Granular Breakdown -->
-      <div class="macros__breakdown">
-        <h3 class="macros__subtitle">Ingredient Breakdown</h3>
-        <ul class="macros__breakdown-list">
-          <li class="macros__item-small">
-            <span class="arsenal__item-qty">2×</span>
-            <span class="macros__item-text">Whole Eggs <span class="macros__tertiary">— 12g Protein / 10g Fats / 1g
-                Carbs / 140 kcal</span></span>
-          </li>
-          <li class="macros__item-small">
-            <span class="arsenal__item-qty">2×</span>
-            <span class="macros__item-text">Slices Brown Bread <span class="macros__tertiary">— 6g Protein / 2g Fats /
-                28g Carbs / 150 kcal</span></span>
-          </li>
-          <li class="macros__item-small">
-            <span class="arsenal__item-qty">½</span>
-            <span class="macros__item-text">Spoon Ghee (~5g) <span class="macros__tertiary">— 0g Protein / 5g Fats / 0g
-                Carbs / 45 kcal</span></span>
-          </li>
-          <li class="macros__item-small">
-            <span class="arsenal__item-qty">½</span>
-            <span class="macros__item-text">Spoon Tandoori Mayo <span class="macros__tertiary">— 0g Protein / 3g Fats /
-                1g Carbs / 35 kcal</span></span>
-          </li>
-          <li class="macros__item-small">
-            <span class="arsenal__item-qty">1×</span>
-            <span class="macros__item-text">Amul Cheese Slice <span class="macros__tertiary">— 4g Protein / 5g Fats / 1g
-                Carbs / 60 kcal</span></span>
-          </li>
-          <li class="macros__item-small">
-            <span class="arsenal__item-qty">—</span>
-            <span class="macros__item-text">Jalapeños &amp; Spices <span class="macros__tertiary">— 0g Protein / 0g Fats
-                / 1g Carbs / 11 kcal</span></span>
-          </li>
-        </ul>
-      </div>
+      <div class="arsenal__grid macros__grid reveal">
 
+        <!-- Total Output -->
+        <div class="macros__output">
+          <h3 class="macros__subtitle">Total Output <span class="macros__note">(Approx.)</span></h3>
+          <ul class="macros__list">
+            <li class="macros__item">
+              <span class="macros__stat">~441</span>
+              <span class="macros__label">Calories <span class="macros__note">kcal</span></span>
+            </li>
+            <li class="macros__item">
+              <span class="macros__stat">22g</span>
+              <span class="macros__label">Protein <span class="macros__note">(Muscle recovery)</span></span>
+            </li>
+            <li class="macros__item">
+              <span class="macros__stat">32g</span>
+              <span class="macros__label">Carbohydrates <span class="macros__note">(Sustained energy)</span></span>
+            </li>
+            <li class="macros__item">
+              <span class="macros__stat">25g</span>
+              <span class="macros__label">Fats <span class="macros__note">(Balanced)</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Granular Breakdown -->
+        <div class="macros__breakdown">
+          <h3 class="macros__subtitle">Ingredient Breakdown</h3>
+          <ul class="macros__breakdown-list">
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">2×</span>
+              <span class="macros__item-text">Whole Eggs <span class="macros__tertiary">— 12g Protein / 10g Fats / 1g
+                  Carbs / 140 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">2×</span>
+              <span class="macros__item-text">Slices Brown Bread <span class="macros__tertiary">— 6g Protein / 2g Fats /
+                  28g Carbs / 150 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">½</span>
+              <span class="macros__item-text">Spoon Ghee (~5g) <span class="macros__tertiary">— 0g Protein / 5g Fats /
+                  0g
+                  Carbs / 45 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">½</span>
+              <span class="macros__item-text">Spoon Tandoori Mayo <span class="macros__tertiary">— 0g Protein / 3g Fats
+                  /
+                  1g Carbs / 35 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">1×</span>
+              <span class="macros__item-text">Amul Cheese Slice <span class="macros__tertiary">— 4g Protein / 5g Fats /
+                  1g
+                  Carbs / 60 kcal</span></span>
+            </li>
+            <li class="macros__item-small">
+              <span class="arsenal__item-qty">—</span>
+              <span class="macros__item-text">Jalapeños &amp; Spices <span class="macros__tertiary">— 0g Protein / 0g
+                  Fats
+                  / 1g Carbs / 11 kcal</span></span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
-    </div>
-    
+
     <!-- ========== FOOTER ========== -->
-    <footer class="footer" style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--clr-border); width: 100%;">
+    <footer class="footer"
+      style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--clr-border); width: 100%;">
       <div class="container">
         <p class="footer__text">
           <span>SSS</span> — built &amp; deployed by Siddharth

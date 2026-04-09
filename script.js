@@ -304,9 +304,37 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
+  function initLoaderAndStart() {
+    const loader = document.getElementById('page-loader');
+    const fill = document.getElementById('loader-fill');
+    const status = document.getElementById('loader-status');
+
+    if (!loader) {
+      init();
+      return;
+    }
+
+    let progress = 0;
+    
+    const progressInterval = setInterval(() => {
+      progress += Math.random() * 15;
+      if (progress > 85) progress = 85;
+      if (fill) fill.style.width = `${progress}%`;
+    }, 200);
+
+    window.addEventListener('load', () => {
+      clearInterval(progressInterval);
+      if (fill) fill.style.width = '100%';
+      if (status) status.innerText = 'Service rendered.';
+
+      setTimeout(() => {
+        loader.classList.add('is-hidden');
+        setTimeout(() => {
+          init();
+        }, 800); // Delay GSAP until loader visually fades out (0.8s)
+      }, 500);
+    });
   }
+
+  initLoaderAndStart();
 })();

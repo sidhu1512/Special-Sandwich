@@ -596,6 +596,66 @@ a { color: var(--clr-accent); text-decoration: none; }
 }
 
 /* ============================================================
+   PRE-LOADER
+   ============================================================ */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--clr-bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1), visibility 0.8s;
+}
+
+.loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+.loader__title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  letter-spacing: 0.1em;
+  color: var(--clr-text);
+}
+
+.loader__progress-bar {
+  width: 14rem;
+  height: 1px;
+  background: var(--clr-surface-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.loader__progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--clr-accent);
+  transition: width 0.3s ease;
+}
+
+.loader__status {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+/* ============================================================
    SCROLL ANIMATIONS
    ============================================================ */
 .reveal {
